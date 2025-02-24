@@ -59,6 +59,12 @@ header {
     height: calc(6vh + 1rem);
     border-radius: 1rem;
     background-color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.category-image-container:hover {
+    transform: scale(1.05);
 }
 
 /* Desktop Styles */

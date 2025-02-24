@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { IoHeart } from "react-icons/io5";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "../components/Header"
 import UploadedImage from "../components/UploadedImage";
 import Dropdown from "../components/Dropdown";
@@ -7,6 +9,9 @@ import './styles/Pages.css'
 
 function Upload(props) {
     const [image, setImage] = useState("../../images/green-top.jpg");
+    const [category, setCategory] = useState(null);
+    const [color, setColor] = useState(null);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const categories = [
         { value: "tops", label: "Tops" },
@@ -36,19 +41,44 @@ function Upload(props) {
         { value: "silver", label: "Silver" }
     ];
 
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0]; 
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0]; 
         if (file) {
             setImage(URL.createObjectURL(file)); 
         }
     };
 
+    const handleHeartClick = () => {
+        setIsFavorite(!isFavorite);
+
+        toast.success(isFavorite ? "Removed from favorites" : "Added to favorites", {
+            position: "top-right",
+            autoClose: 1000, 
+            hideProgressBar: true,
+        });
+    }
+
+    const handleSaveClick = () => {
+        toast.success("Succesfully saved", {
+            position: "top-right",
+            autoClose: 1000, 
+            hideProgressBar: true,
+        });
+    }
+
     return (
         <div className="upload-page">
             <Header title="Upload Item"></Header>
-            <input onChange={props.onChange} value={props.itemName} placeholder="Name Item" className="item-name-input"/>
-            <IoHeart className="heart" />
+            <ToastContainer />
 
+            {/* favorites button */}
+            <button className="heart-button" onClick={handleHeartClick}>
+                {isFavorite ? <IoHeart className="heart" style={{ color: 'pink' }} /> : <IoHeart className="heart"/>}
+            </button>
+
+            {/* name input */}
+            <input onChange={props.onChange} value={props.itemName} placeholder="Name Item" className="item-name-input"/>
+            
             {/* image uploading box */}
             <input className="uploading-input" type="file" accept="image/*" onChange={handleImageUpload} />
             <div className="image-container">
@@ -57,11 +87,12 @@ function Upload(props) {
 
             {/* dropdown options */}
             <div className="row-container">
-                <Dropdown label='Category' options={categories} />
-                <Dropdown label='Color' options={colors} />
+                <Dropdown label='Category' options={categories} handleDropdownChange={(e) => {setCategory(e.target.value)}} />
+                <Dropdown label='Color' options={colors} handleDropdownChange={(e) => {setColor(e.target.value)}}/>
             </div>
-            <button className="save-button">Save</button>
-                
+
+            {/* save button */}
+            <button className="save-button" onClick={handleSaveClick}>Save</button>
         </div>
     );
 }

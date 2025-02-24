@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { IoHeart } from "react-icons/io5";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "../components/Header"
 import UploadedImage from "../components/UploadedImage";
 import Dropdown from "../components/Dropdown";
@@ -5,28 +9,59 @@ import CategorySquare from "../components/CategorySquare"
 import './styles/Pages.css'
 
 function Build(props) {
-    const categories = [
-        { value: "tops", label: "Tops" },
-        { value: "pants", label: "Pants" },
-        { value: "skirts", label: "Skirts" },
-        { value: "shoes", label: "Shoes" },
-        { value: "accessories", label: "Accessories" },
-        { value: "jackets", label: "Jackets" },
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    const occasions = [
+        { value: "default", label: "Default" },
+        { value: "casual", label: "Casual" },
+        { value: "going out", label: "Going Out" },
+        { value: "athletic", label: "Athletic" },
+        { value: "work", label: "Work" },
+        { value: "formal", label: "Formal" },
     ];
+
+    const handleHeartClick = () => {
+        setIsFavorite(!isFavorite);
+
+        toast.success(isFavorite ? "Removed from favorites" : "Added to favorites", {
+            position: "top-right",
+            autoClose: 1000, 
+            hideProgressBar: true,
+        });
+    }
+
+    const handleSaveClick = () => {
+        toast.success("Succesfully saved", {
+            position: "top-right",
+            autoClose: 1000, 
+            hideProgressBar: true,
+        });
+    }
 
     return (
         <div className="upload-page">
             <Header title="Build Outfit"></Header>
+            <ToastContainer />
+
+            {/* favorites button */}
+            <button className="heart-button" onClick={handleHeartClick}>
+                {isFavorite ? <IoHeart className="heart" style={{ color: 'pink' }} /> : <IoHeart className="heart"/>}
+            </button>
+
+            {/* top row containing name input and category dropdown */}
             <div className="row-container">
                 <input onChange={props.onChange} value={props.itemName} placeholder="Name Outfit" className="outfit-name-input"/>
                 <div className="category-container-build">
-                    <Dropdown label='Category' options={categories} />
+                    <Dropdown label='Occasions' options={occasions} />
                 </div>
             </div>
-            
+
+            {/* outfit building box */}
             <div className="image-container">
                 <UploadedImage src="../../images/green-top.jpg" />
             </div>
+            
+            {/* clothing categories */}
             <p className="choose-text">Choose from your:</p>
             <section className="category-squares-grid">
                     <CategorySquare style={{ gridRow: 1, gridCol: 1 }} label="Tops" path="../../images/green-top.jpg" />
@@ -37,7 +72,9 @@ function Build(props) {
                     <CategorySquare style={{ gridRow: 2, gridCol: 3 }} label="Accessories" path="../../images/necklace.jpg" />   
                 
             </section>
-            <button className="save-button">Save</button>
+
+            {/* save button */}
+            <button className="save-button" onClick={handleSaveClick}>Save</button>
         </div>
     );
 }
