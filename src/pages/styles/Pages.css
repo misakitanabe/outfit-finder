@@ -6,7 +6,8 @@
     flex-direction: column;
     height: 100vh;
     max-width: 100vw;
-    background-color: var(--color-background-page);;
+    background-color: var(--color-background-page);
+    color: var(--color-accent);
 }
 
 .upload-container {
@@ -21,6 +22,29 @@
     flex-grow: 1;
     max-height: calc(100vh - 8rem);
 }
+
+.uploading-input {
+    margin-left: 10%;
+    margin-bottom: 1rem;
+    border: none;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    background-color: var(--color-accent);
+    border-radius: 1rem;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s ease, scale 0.4s ease;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: var(--color-hover);
+    transform: scale(1.02);
+}
+
 
 .image-container {
     border-radius: 12px;
@@ -55,6 +79,27 @@
     align-self: center;
     margin-top: 1rem;
     margin-bottom: 4rem;
+    cursor: pointer;
+    transition: background 0.2s ease, scale 0.4s ease;
+}
+
+.save-button:hover {
+    background-color: var(--color-hover);
+    transform: scale(1.02);
+}
+
+.heart {
+    font-size: 3rem;
+    flex-shrink: 0;
+    color: pink;
+    align-self: flex-end;
+    margin-right: 10%;
+    cursor: pointer;
+    transition: transform 0.2s ease, scale 0.4s ease;;
+}
+
+.heart:hover {
+    transform: scale(1.1);
 }
 
 
@@ -84,8 +129,6 @@
 }
 
 .category-squares-grid {
-    /* max-height: calc(); */
-    /* height: 100%; */
     grid-row: 3 / 4;
     grid-column: 1 / 3;
     display: grid;
@@ -94,7 +137,6 @@
     gap: 2rem;
     align-self: center;
     margin: 2rem 10rem 2rem 10rem;
-    /* overflow: auto; */
 }
 
 .squares-first-row {
@@ -104,4 +146,51 @@
 .squares-second-row {
     grid-column: 1 / 4;
     grid-row: 2 / 3;
+}
+
+.choose-text {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    align-self: center;
+    margin-right: 10rem;
+}
+
+/************************ Home Page ***********************/
+.home-page {
+    height: 100vh;
+    max-width: 100vw;
+    background-color: var(--color-background-page);
+    color: var(--color-accent);
+}
+
+.home-content {
+    margin: 4rem;
+}
+
+.home-text {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 800px) {
+    .save-button {
+        height: 2rem;
+        flex-shrink: 0;
+    }
+
+    .image-container {
+        max-height: 65%;
+    }
+
+    .category-squares-grid {
+        row-gap: 1rem;
+        column-gap: 3rem;
+        align-self: center;
+        margin: 0rem 10rem 0rem 10rem;
+    }
+
+    .choose-text {
+        margin-right: 16rem;
+    }
 }

@@ -1,13 +1,18 @@
 import "./styles/Components.css";
 
 function Dropdown(props) {
+    console.log(props)
     return (
         <div className="dropdown-container">
-            <label for="options" className="dropdown-label">{props.label}</label>
+            <label htmlFor="options" className="dropdown-label">
+                {props.label}
+            </label>
             <select className="dropdown" id="options" name="options">
-                <option value="action1">Action 1</option>
-                <option value="action2">Action 2</option>
-                <option value="action3">Action 3</option>
+                {props.options.map((option, index) => (
+                    <option key={index} value={option.value}>
+                        {option.label}
+                    </option>
+                ))}
             </select>
         </div>
     );

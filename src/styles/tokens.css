@@ -1,8 +1,9 @@
 :root {
     --color-accent: rgb(130, 197, 159);
-    /* --color-link: #af1f1f;
-    --color-text: #942b14d3; */
+    --color-link: rgb(42, 97, 66);
+    --color-text: #942b14d3;
     --color-background-page:rgb(253, 248, 235);
+    --color-hover: rgb(149, 221, 180);
     /* --color-background-header: #ebd2ba;
     --font-family-header: "Jua", sans-serif;
     --font-family-text: 'Lexend', sans-serif; */

@@ -2,7 +2,7 @@ import "./styles/Components.css";
 
 function UploadedImage(props) {
     return (
-        <img src="../../images/green-top.jpg" alt="green top" className="uploaded-image"/>
+        <img src={props.src} alt="green top" className="uploaded-image"/>
     )
 }
 
