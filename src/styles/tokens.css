@@ -1,7 +1,7 @@
 :root {
     --color-accent: rgb(130, 197, 159);
     --color-link: rgb(42, 97, 66);
-    --color-text: #942b14d3;
+    /* --color-text: #942b14d3; */
     --color-background-page:rgb(253, 248, 235);
     --color-hover: rgb(149, 221, 180);
     /* --color-background-header: #ebd2ba;
@@ -9,10 +9,9 @@
     --font-family-text: 'Lexend', sans-serif; */
 }
 
-/* body.dark-mode {
-    --color-accent: #fff3e5;
-    --color-link: #ffa4a4;
-    --color-text: #ebd2ba;
-    --color-background-page: #72391dd9;
-    --color-background-header: #4e2901;
-} */
+body.dark-mode {
+    --color-accent:rgb(42, 97, 66);
+    --color-link: rgb(253, 248, 235);
+    --color-background-page: rgb(130, 197, 159);
+    --color-hover: rgb(149, 221, 180);
+}

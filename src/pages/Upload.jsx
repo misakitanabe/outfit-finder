@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IoHeart } from "react-icons/io5";
 import { ToastContainer, toast } from "react-toastify";
+import BounceLoader from "react-spinners/ClipLoader";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "../components/Header"
 import UploadedImage from "../components/UploadedImage";
@@ -8,7 +9,7 @@ import Dropdown from "../components/Dropdown";
 import './styles/Pages.css'
 
 function Upload(props) {
-    const [image, setImage] = useState("../../images/green-top.jpg");
+    const [image, setImage] = useState(null);
     const [category, setCategory] = useState(null);
     const [color, setColor] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
@@ -81,7 +82,15 @@ function Upload(props) {
             
             {/* image uploading box */}
             <input className="uploading-input" type="file" accept="image/*" onChange={handleImageUpload} />
+            
             <div className="image-container">
+                {!image && <BounceLoader
+                    color='var(--color-link)'
+                    loading={!image}
+                    cssOverride={{flexShrink: 0, position: 'relative', top: '40%'}}
+                    size={50}
+                    aria-label="Loading Spinner"
+                />}
                 {image && <UploadedImage src={image} />}
             </div>
 

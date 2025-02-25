@@ -6,7 +6,6 @@ header {
     height: 8rem;
     background-color: var(--color-accent);
     padding: 1rem;
-    justify-content: space-between;
     align-items: center;
     display: flex;
     color: var(--color-background-page);
@@ -16,6 +15,16 @@ header {
     color:  var(--color-link);
     margin: 0 0.5rem 0 0.5rem;
     font-size: 1.25rem;
+}
+
+.dark-mode-checkbox {
+    color: var(--color-link);
+    font-size: 1.25rem;
+}
+
+.dark-mode-checkbox input {
+    margin-right: 0.25rem; 
+    accent-color: var(--color-link);
 }
 
 .uploaded-image {
