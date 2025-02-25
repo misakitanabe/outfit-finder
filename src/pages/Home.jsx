@@ -1,6 +1,4 @@
 import Header from "../components/Header"
-import UploadedImage from "../components/UploadedImage";
-import Dropdown from "../components/Dropdown";
 import './styles/Pages.css'
 
 function Home() {
