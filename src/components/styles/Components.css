@@ -8,7 +8,7 @@ header {
     padding: 1rem;
     align-items: center;
     display: flex;
-    color: var(--color-background-page);
+    color: var(--color-link);
 }
 
 .header-link {
@@ -37,7 +37,6 @@ header {
 .dropdown-container{
     display: flex;
     flex-direction: column;
-    color: var(--color-accent);
     font-size: 1.5rem;
 }
 
@@ -52,7 +51,6 @@ header {
 
 /************************ Clothing Category Square ***********************/
 .category-square {
-    color: var(--color-accent);
     font-size: 1.5rem;
     text-align: center;
 }
@@ -68,7 +66,7 @@ header {
     width: calc(14vw + 1rem);
     height: calc(6vh + 1rem);
     border-radius: 1rem;
-    background-color: white;
+    background-color: var(--color-image-container);
     cursor: pointer;
     transition: transform 0.2s ease;
     box-shadow: 0px 2px 6px -2px #888888;
@@ -87,6 +85,7 @@ header {
 .react-tabs__tab--selected {
     border-color: var(--color-link) !important;
     color: var(--color-link) !important;
+    background-color: var(--color-image-container) !important;
 }
 
 .sort-container {
@@ -103,7 +102,7 @@ header {
 /************************ Clothes Panel ***********************/
 .clothes-panel-container {
     padding: 1rem;
-    background-color: white;
+    background-color: var(--color-image-container);
     border-radius: 0.4rem;
     border: 1px solid var(--color-link);
     display: grid;

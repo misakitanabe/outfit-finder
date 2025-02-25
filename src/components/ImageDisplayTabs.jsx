@@ -9,11 +9,11 @@ function ImageDisplayTabs(props) {
     const [sortValue, setSortValue] = useState("none");
 
     const clothes = [
-        { category: "tops", path: "../../images/green-top.jpg", wornFrequency: 1 },
+        { category: "tops", path: "../../images/green-top.png", wornFrequency: 1 },
         { category: "pants", path: "../../images/jeans.png", wornFrequency: 9 },
         { category: "skirts", path: "../../images/pink-skirt.webp" , wornFrequency: 2 },
-        { category: "shoes", path: "../../images/shoe.jpg", wornFrequency: 3 },
-        { category: "accessories", path: "../../images/necklace.jpg", wornFrequency: 1 },
+        { category: "shoes", path: "../../images/shoe.webp", wornFrequency: 3 },
+        { category: "accessories", path: "../../images/necklace.png", wornFrequency: 1 },
         { category: "jackets", path: "../../images/jacket.png", wornFrequency: 4 },
     ];
 

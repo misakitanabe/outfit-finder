@@ -1,9 +1,11 @@
 :root {
-    --color-accent: rgb(130, 197, 159);
+    --color-accent: rgb(155 186 169);
     --color-link: rgb(42, 97, 66);
-    /* --color-text: #942b14d3; */
-    --color-background-page:rgb(253, 248, 235);
-    --color-hover: rgb(149, 221, 180);
+    --color-text:rgb(99, 131, 113);
+    /* --color-background-page:rgb(253, 248, 235); */
+    --color-background-page:rgb(231 234 228);
+    --color-hover:  rgb(182, 217, 198);
+    --color-image-container: white;
     /* --color-background-header: #ebd2ba;
     --font-family-header: "Jua", sans-serif;
     --font-family-text: 'Lexend', sans-serif; */
@@ -12,6 +14,8 @@
 body.dark-mode {
     --color-accent:rgb(42, 97, 66);
     --color-link: rgb(253, 248, 235);
-    --color-background-page: rgb(130, 197, 159);
-    --color-hover: rgb(149, 221, 180);
+    --color-background-page: rgb(155 186 169);
+    --color-hover: rgb(56, 119, 83);
+    --color-text:rgb(241, 255, 247);
+    --color-image-container: rgb(90, 142, 114);
 }

@@ -58,18 +58,18 @@ function Build(props) {
 
             {/* outfit building box */}
             <div className="image-container">
-                <UploadedImage src="../../images/green-top.jpg" />
+                <UploadedImage src="../../images/green-top.png" />
             </div>
             
             {/* clothing categories */}
             <p className="choose-text">Choose from your:</p>
             <section className="category-squares-grid">
-                    <CategorySquare style={{ gridRow: 1, gridCol: 1 }} label="Tops" path="../../images/green-top.jpg" />
+                    <CategorySquare style={{ gridRow: 1, gridCol: 1 }} label="Tops" path="../../images/green-top.png" />
                     <CategorySquare style={{ gridRow: 1, gridCol: 2 }} label="Pants" path="../../images/jeans.png"/>
                     <CategorySquare style={{ gridRow: 1, gridCol: 3 }} label="Skirts" path="../../images/pink-skirt.webp"/>
-                    <CategorySquare style={{ gridRow: 2, gridCol: 1 }} label="Shoes" path="../../images/shoe.jpg"/>
+                    <CategorySquare style={{ gridRow: 2, gridCol: 1 }} label="Shoes" path="../../images/shoe.webp"/>
                     <CategorySquare style={{ gridRow: 2, gridCol: 2 }} label="Jackets" path="../../images/jacket.png"/>
-                    <CategorySquare style={{ gridRow: 2, gridCol: 3 }} label="Accessories" path="../../images/necklace.jpg" />   
+                    <CategorySquare style={{ gridRow: 2, gridCol: 3 }} label="Accessories" path="../../images/necklace.png" />   
                 
             </section>
 
