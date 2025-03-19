@@ -174,14 +174,16 @@ input[type="file"]::-webkit-file-upload-button:active {
 }
 
 /************************ Home Page ***********************/
-.home-page {
+.basic-page {
     height: 100vh;
     max-width: 100vw;
     background-color: var(--color-background-page);
 }
 
-.home-content {
+.basic-content {
     margin: 4rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
 }
 
 .home-text {

@@ -15,43 +15,49 @@ function App() {
 
     return (
         <Routes>
+            {/* TODO: UNCOMMENT PROTECTED ROUTES LATER */}
             {/* Home Page */}
-            <Route 
+            {/* <Route 
                 path="/" 
-                element={<ProtectedRoute authToken={authToken} >
+                element={
                     <Home />
-                </ProtectedRoute>} 
-            />
+                } 
+            /> */}
 
             {/* My Clothes Page */}
-            <Route 
+            {/* <Route 
                 path="/clothes" 
                 element={<ProtectedRoute authToken={authToken} >
                     <Clothes />
                 </ProtectedRoute>} 
-            />
+            /> */}
 
             {/* Upload Page */}
-            <Route 
+            {/* <Route 
                 path="/upload" 
                 element={<ProtectedRoute authToken={authToken} >
                     <Upload onChange={(e) => {setItemName(e.target.value)}} itemName={itemName} />
                 </ProtectedRoute>} 
-            />
+            /> */}
 
             {/* Build Page */}
-            <Route 
+            {/* <Route 
                 path="/build" 
                 element={<ProtectedRoute authToken={authToken} >
                     <Build onChange={(e) => {setItemName(e.target.value)}} itemName={itemName} />
                 </ProtectedRoute>} 
-            />
+            /> */}
             
             {/* Register new user Page */}
             <Route path="/register" element={<RegisterPage setAuthToken={setAuthToken}  />} />
 
             {/* Login Page */}
             <Route path="/login" element={<LoginPage setAuthToken={setAuthToken} />} />
+
+            <Route path="/" element={<Home />} />
+            <Route path="/clothes" element={<Clothes />} />
+            <Route path="/upload" element={<Upload onChange={(e) => {setItemName(e.target.value)}} itemName={itemName} />} />
+            <Route path="/build" element={<Build onChange={(e) => {setItemName(e.target.value)}} itemName={itemName} />} />
 
         </Routes>
     )

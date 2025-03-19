@@ -45,7 +45,7 @@ function Build(props : BuildProps) {
 
     return (
         <div className="upload-page">
-            <Header title="Build Outfit"></Header>
+            <Header></Header>
             <ToastContainer />
 
             {/* favorites button */}

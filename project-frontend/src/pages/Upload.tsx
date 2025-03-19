@@ -76,7 +76,7 @@ function Upload(props : UploadProps) {
 
     return (
         <div className="upload-page">
-            <Header title="Upload Item"></Header>
+            <Header></Header>
             <ToastContainer />
 
             {/* favorites button */}

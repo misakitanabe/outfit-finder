@@ -1,7 +1,10 @@
-import { UsernamePasswordForm } from "../auth/UsernamePasswordForm";
+import { UsernamePasswordForm } from "../components/UsernamePasswordForm";
 import { sendPostRequest } from "../auth/sendPostRequest";
 import { Link } from "react-router";
 import { useNavigate } from 'react-router';
+import Header from "../components/Header"
+import './styles/Pages.css'
+
 
 interface OnSubmitResponse {
     type: "error" | "success";
@@ -52,13 +55,16 @@ export function LoginPage(props: LoginPageProps) {
     }
 
     return (
-        <>
-            <h1>Login</h1>
-            <UsernamePasswordForm onSubmit={onSubmit} />
-            <p>
-                Don't have an account? 
-                <Link to="/register"> Register Here</Link>
-            </p>
-        </>
+        <div className="basic-page">
+            <Header></Header>
+            <main className="basic-content">
+                <h1>Login</h1>
+                <UsernamePasswordForm onSubmit={onSubmit} />
+                <p>
+                    Don't have an account? 
+                    <Link to="/register"> Register Here</Link>
+                </p>
+            </main>
+        </div>    
     );
 }

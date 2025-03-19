@@ -3,9 +3,9 @@ import './styles/Pages.css'
 
 function Home() {
     return (
-        <div className="home-page">
-            <Header title="Fit Slayer"></Header>
-            <main className="home-content">
+        <div className="basic-page">
+            <Header></Header>
+            <main className="basic-content">
                 <h1>Welcome to Fit Slayer</h1>
                 <p className="home-text">Upload photos of YOUR clothes and start building outfits that are a slay!</p>
             </main>

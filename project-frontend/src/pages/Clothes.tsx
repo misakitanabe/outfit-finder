@@ -15,8 +15,9 @@ function Clothes() {
 
     return (
         <div className="clothes-page">
-            <Header title="My Clothes"></Header>
+            <Header></Header>
             <main className="clothes-content">
+                <h1>My Clothes</h1>
                 <ImageDisplayTabs filters={categories} />
             </main>
         </div>

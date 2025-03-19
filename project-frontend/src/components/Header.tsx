@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import "./styles/Components.css";
 import { Link } from "react-router";
+import { IoPersonCircleOutline } from "react-icons/io5";
 
-interface HeaderProps {
-    title: string;
-}
-
-function Header(props : HeaderProps) {
+function Header() {
     const [isDark, setIsDark] = useState(false);
 
     useEffect(() => {
@@ -23,7 +20,6 @@ function Header(props : HeaderProps) {
 
     return (
         <header>
-            <h1>{props.title}</h1>
             <nav>
                 <Link className="header-link" to="/">Home</Link>
                 <Link className="header-link" to="/clothes">My Clothes</Link>
@@ -34,6 +30,12 @@ function Header(props : HeaderProps) {
                 <input onChange={handleDarkModeChange} type="checkbox" autoComplete="off" />
                 Dark mode
             </label>
+            <Link className="profile-link" to="/login">
+                <IoPersonCircleOutline className="profile" 
+                    // style={{ color: 'pink' }} 
+                />
+            </Link>
+                
         </header>
     );
 }

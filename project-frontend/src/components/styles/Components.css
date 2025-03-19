@@ -17,6 +17,12 @@ header {
     font-size: 1.25rem;
 }
 
+.profile-link {
+    color:  var(--color-link);
+    margin-left: auto;
+    font-size: 1.25rem;
+}
+
 .dark-mode-checkbox {
     color: var(--color-link);
     font-size: 1.25rem;
@@ -47,6 +53,20 @@ header {
     border-radius: 1rem;
     padding: 0.25rem;
     margin-top: 0.25rem;
+}
+
+.profile {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    color: var(--color-link);
+    align-self: flex-end;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-left: auto;
+}
+
+.profile:hover {
+    transform: scale(1.04);
 }
 
 /************************ Clothing Category Square ***********************/
@@ -127,6 +147,35 @@ header {
     transform: scale(1.05);
 }
 
+/************************ Auth ***********************/
+.auth-label {
+    margin-right: 1rem;
+}
+
+.auth-input {
+    margin-left: 0.5rem;
+    border-radius: 0.25rem;
+    height: 1.5rem;
+    border: none;
+}
+
+.auth-button {
+    background-color: var(--color-accent);
+    color: var(--color-background-page);
+    border: none;
+    border-radius: 0.25rem;
+    height: 1.5rem;
+    width: 4rem;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.auth-button:hover {
+    transform: scale(1.04);
+}
+
+
 /* Desktop Styles */
 @media screen and (min-width: 800px) {
     .category-image-container  {
@@ -140,7 +189,7 @@ header {
     }
 
     .header-link {
-        margin: 0 2rem 0 2rem;
+        margin: 0 1rem 0 1rem;
     }
 
     header {

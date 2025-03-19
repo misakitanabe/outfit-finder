@@ -1,4 +1,5 @@
 import { useActionState } from "react";
+import "./styles/Components.css";
 
 interface OnSubmitResponse {
     type: "error" | "success";
@@ -40,17 +41,17 @@ export function UsernamePasswordForm(props : UsernamePasswordFormProps) {
                 </p>
             )}
             <form action={submitAction}>
-                <label>
-                    <span>Username</span>
-                    <input id="username" name="username" disabled={isPending} />
+                <label className="auth-label">
+                    Username
+                    <input className="auth-input" id="username" name="username" disabled={isPending} />
                 </label>
 
-                <label>
-                    <span>Password</span>
-                    <input type="password" id="password" name="password" disabled={isPending} />
+                <label className="auth-label">
+                    Password
+                    <input className="auth-input" type="password" id="password" name="password" disabled={isPending} />
                 </label>
                 
-                <button disabled={isPending}>submit</button>
+                <button className="auth-button" disabled={isPending}>submit</button>
             </form>
         </>
         
