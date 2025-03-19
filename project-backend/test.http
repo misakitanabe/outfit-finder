@@ -1,0 +1,18 @@
+### This is a comment
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{ "username": "misaki", "password": "password" }
+
+### A second example, each request should be delimited by a triple hash
+GET http://localhost:3000/api/images
+
+### /auth/login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{ "username": "misaki", "password": "password" }
+
+### Verifying auth tokens
+GET http://localhost:3000/api/images
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pc2FraSIsImlhdCI6MTc0MjQxOTc0MSwiZXhwIjoxNzQyNTA2MTQxfQ.iAbopZsxZFXYS3m2OrUOfl0I9c5W8egqA0NzUdQhnaE
