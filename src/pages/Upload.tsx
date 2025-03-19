@@ -8,10 +8,15 @@ import UploadedImage from "../components/UploadedImage";
 import Dropdown from "../components/Dropdown";
 import './styles/Pages.css'
 
-function Upload(props) {
-    const [image, setImage] = useState(null);
-    const [category, setCategory] = useState(null);
-    const [color, setColor] = useState(null);
+interface UploadProps {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    itemName: string;
+}
+
+function Upload(props : UploadProps) {
+    const [image, setImage] = useState<string | null>(null);
+    const [category, setCategory] = useState("");
+    const [color, setColor] = useState("");
     const [isFavorite, setIsFavorite] = useState(false);
 
     const categories = [
@@ -42,10 +47,12 @@ function Upload(props) {
         { value: "silver", label: "Silver" }
     ];
 
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0]; 
-        if (file) {
-            setImage(URL.createObjectURL(file)); 
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            const file = e.target.files[0]; 
+            if (file) {
+                setImage(URL.createObjectURL(file)); 
+            }
         }
     };
 

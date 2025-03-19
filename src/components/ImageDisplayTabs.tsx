@@ -5,7 +5,17 @@ import "./styles/Components.css";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
-function ImageDisplayTabs(props) {
+interface Category {
+    value: string;
+    label: string;
+}
+  
+// Define props for ImageDisplayTabs
+interface ImageDisplayTabsProps {
+    filters: Category[]; 
+}
+
+function ImageDisplayTabs(props : ImageDisplayTabsProps) {
     const [sortValue, setSortValue] = useState("none");
 
     const clothes = [

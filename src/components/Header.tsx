@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import "./styles/Components.css";
 import { Link } from "react-router";
 
-function Header(props) {
+interface HeaderProps {
+    title: string;
+}
+
+function Header(props : HeaderProps) {
     const [isDark, setIsDark] = useState(false);
 
     useEffect(() => {

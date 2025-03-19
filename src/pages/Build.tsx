@@ -8,7 +8,12 @@ import Dropdown from "../components/Dropdown";
 import CategorySquare from "../components/CategorySquare"
 import './styles/Pages.css'
 
-function Build(props) {
+interface BuildProps {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    itemName: string;
+}
+
+function Build(props : BuildProps) {
     const [isFavorite, setIsFavorite] = useState(false);
 
     const occasions = [
@@ -64,13 +69,12 @@ function Build(props) {
             {/* clothing categories */}
             <p className="choose-text">Choose from your:</p>
             <section className="category-squares-grid">
-                    <CategorySquare style={{ gridRow: 1, gridCol: 1 }} label="Tops" path="../../images/green-top.png" />
-                    <CategorySquare style={{ gridRow: 1, gridCol: 2 }} label="Pants" path="../../images/jeans.png"/>
-                    <CategorySquare style={{ gridRow: 1, gridCol: 3 }} label="Skirts" path="../../images/pink-skirt.webp"/>
-                    <CategorySquare style={{ gridRow: 2, gridCol: 1 }} label="Shoes" path="../../images/shoe.webp"/>
-                    <CategorySquare style={{ gridRow: 2, gridCol: 2 }} label="Jackets" path="../../images/jacket.png"/>
-                    <CategorySquare style={{ gridRow: 2, gridCol: 3 }} label="Accessories" path="../../images/necklace.png" />   
-                
+                <CategorySquare style={{ gridRow: 1, gridColumn: 1 }} label="Tops" path="../../images/green-top.png" />
+                <CategorySquare style={{ gridRow: 1, gridColumn: 2 }} label="Pants" path="../../images/jeans.png"/>
+                <CategorySquare style={{ gridRow: 1, gridColumn: 3 }} label="Skirts" path="../../images/pink-skirt.webp"/>
+                <CategorySquare style={{ gridRow: 2, gridColumn: 1 }} label="Shoes" path="../../images/shoe.webp"/>
+                <CategorySquare style={{ gridRow: 2, gridColumn: 2 }} label="Jackets" path="../../images/jacket.png"/>
+                <CategorySquare style={{ gridRow: 2, gridColumn: 3 }} label="Accessories" path="../../images/necklace.png" />   
             </section>
 
             {/* save button */}

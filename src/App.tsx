@@ -14,7 +14,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/clothes" element={<Clothes />} />
             <Route path="/upload" element={<Upload onChange={(e) => {setItemName(e.target.value)}} itemName={itemName} />} />
-            <Route path="/build" element={<Build />} />
+            <Route path="/build" element={<Build onChange={(e) => {setItemName(e.target.value)}} itemName={itemName} />} />
         </Routes>
     )
 }

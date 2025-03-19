@@ -3,7 +3,7 @@ import ImageDisplayTabs from "../components/ImageDisplayTabs";
 import 'react-tabs/style/react-tabs.css';
 import './styles/Pages.css'
 
-function Clothes(props) {
+function Clothes() {
     const categories = [
         { value: "tops", label: "Tops" },
         { value: "pants", label: "Pants" },

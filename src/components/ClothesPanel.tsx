@@ -1,7 +1,19 @@
 import "./styles/Components.css";
 import ItemSquare from "./ItemSquare";
 
-function ClothesPanel(props) {
+interface ClothingItem {
+    category: string;
+    path: string;
+    wornFrequency: number;
+}
+
+interface ClothesPanelProps {
+    filter?: string; // Optional filter for category
+    clothes: ClothingItem[]; // Array of clothing items
+    sortValue: string; 
+}
+
+function ClothesPanel(props : ClothesPanelProps) {
     return (
         <div className="clothes-panel-container">
             {props.clothes

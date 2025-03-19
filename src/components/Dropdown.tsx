@@ -1,6 +1,17 @@
 import "./styles/Components.css";
 
-function Dropdown(props) {
+interface DropdownProps {
+    label?: string;
+    containerStyle?: React.CSSProperties;
+    options: {
+        value: string;
+        label: string;
+    }[];
+    handleDropdownChange?: React.ChangeEventHandler<HTMLSelectElement>;
+    dropdownStyle?: React.CSSProperties;
+}
+
+function Dropdown(props : DropdownProps) {
     return (
         <div className="dropdown-container" style={props.containerStyle}>
             <label htmlFor="options" className="dropdown-label">

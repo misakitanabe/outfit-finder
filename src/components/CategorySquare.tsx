@@ -1,6 +1,12 @@
 import "./styles/Components.css";
 
-function CategorySquare(props) {
+interface CategorySquareProps {
+    style?: React.CSSProperties; 
+    label: string;
+    path: string;
+}
+
+function CategorySquare(props : CategorySquareProps) {
     return (
         <div style={props.style} className="category-square">
             <div className="category-image-container">
