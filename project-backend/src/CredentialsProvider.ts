@@ -44,7 +44,6 @@ export class CredentialsProvider {
     }
 
     async verifyPassword(username: string, plaintextPassword: string) {
-        // TODO
         const user = await this.collection.findOne(
             { username: username },
             { projection: { password: 1, _id: 0 } } // Exclude _id and return only password

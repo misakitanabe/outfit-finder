@@ -10,7 +10,6 @@ class ImageFormatError extends Error {
 }
 const storageEngine = multer_1.default.diskStorage({
     destination: function (req, file, cb) {
-        // TODO 1
         const UPLOAD_DIR = process.env.IMAGE_UPLOAD_DIR;
         if (!UPLOAD_DIR) {
             throw new Error("Missing IMAGE_UPLOAD_DIR from env file");
@@ -18,7 +17,6 @@ const storageEngine = multer_1.default.diskStorage({
         cb(null, UPLOAD_DIR);
     },
     filename: function (req, file, cb) {
-        // TODO 2
         const filetype = file.mimetype;
         console.log(`image type: ${filetype}`);
         let fileExtension = "";
