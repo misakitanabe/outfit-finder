@@ -53,7 +53,7 @@ class ImageProvider {
         const res = await imageCollection.updateOne({ _id: imageId }, { $set: { name: newName } });
         return res.matchedCount;
     }
-    async createImage(_id, src, name, favorited, category, color, author) {
+    async createImage(_id, src, name, wornFrequency, category, color, author) {
         const imageCollectionName = process.env.IMAGES_COLLECTION_NAME;
         if (!imageCollectionName) {
             throw new Error("Missing IMAGES_COLLECTION_NAME from environment variables");
@@ -64,7 +64,7 @@ class ImageProvider {
             _id: _id,
             src: src,
             name: name,
-            favorited: favorited,
+            wornFrequency: wornFrequency,
             author: author,
             category: category,
             color: color,

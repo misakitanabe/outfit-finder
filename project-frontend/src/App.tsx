@@ -8,10 +8,12 @@ import Clothes from './pages/Clothes';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { ProtectedRoute } from './auth/ProtectedRoute';
+import { useImageFetching } from './images/useImageFetching';
 
 function App() {
     const [itemName, setItemName] = useState("");
     const [authToken, setAuthToken] = useState("");
+    const { isLoading, fetchedImages } = useImageFetching("", authToken);
 
     return (
         <Routes>
@@ -28,7 +30,7 @@ function App() {
             {/* <Route 
                 path="/clothes" 
                 element={<ProtectedRoute authToken={authToken} >
-                    <Clothes />
+                    <Clothes isLoading={isLoading} images={fetchedImages} />
                 </ProtectedRoute>} 
             /> */}
 
@@ -55,7 +57,7 @@ function App() {
             <Route path="/login" element={<LoginPage setAuthToken={setAuthToken} />} />
 
             <Route path="/" element={<Home />} />
-            <Route path="/clothes" element={<Clothes />} />
+            <Route path="/clothes" element={<Clothes isLoading={isLoading} images={fetchedImages} />} />
             <Route path="/upload" element={<Upload authToken={authToken} onChange={(e) => {setItemName(e.target.value)}} itemName={itemName} />} />
             <Route path="/build" element={<Build onChange={(e) => {setItemName(e.target.value)}} itemName={itemName} />} />
 

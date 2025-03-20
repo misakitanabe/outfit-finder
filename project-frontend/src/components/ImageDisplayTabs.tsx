@@ -9,23 +9,35 @@ interface Category {
     value: string;
     label: string;
 }
+
+interface ClothingItem {
+    id: string;
+    src: string;
+    name: string;
+    author: string;
+    wornFrequency: number;
+    category: string;
+    color: string;
+}
   
 // Define props for ImageDisplayTabs
 interface ImageDisplayTabsProps {
     filters: Category[]; 
+    isLoading: boolean;
+    images: ClothingItem[];
 }
 
 function ImageDisplayTabs(props : ImageDisplayTabsProps) {
     const [sortValue, setSortValue] = useState("none");
 
-    const clothes = [
-        { category: "tops", path: "../../images/green-top.png", wornFrequency: 1 },
-        { category: "pants", path: "../../images/jeans.png", wornFrequency: 9 },
-        { category: "skirts", path: "../../images/pink-skirt.webp" , wornFrequency: 2 },
-        { category: "shoes", path: "../../images/shoe.webp", wornFrequency: 3 },
-        { category: "accessories", path: "../../images/necklace.png", wornFrequency: 1 },
-        { category: "jackets", path: "../../images/jacket.png", wornFrequency: 4 },
-    ];
+    // const clothes = [
+    //     { category: "tops", path: "../../images/green-top.png", wornFrequency: 1 },
+    //     { category: "pants", path: "../../images/jeans.png", wornFrequency: 9 },
+    //     { category: "skirts", path: "../../images/pink-skirt.webp" , wornFrequency: 2 },
+    //     { category: "shoes", path: "../../images/shoe.webp", wornFrequency: 3 },
+    //     { category: "accessories", path: "../../images/necklace.png", wornFrequency: 1 },
+    //     { category: "jackets", path: "../../images/jacket.png", wornFrequency: 4 },
+    // ];
 
     const sortValues = [
         { value: "none", label: "None" },
@@ -65,13 +77,13 @@ function ImageDisplayTabs(props : ImageDisplayTabsProps) {
 
                 {/* Show All Panel */}
                 <TabPanel>
-                    <ClothesPanel clothes={clothes} sortValue={sortValue} />
+                    <ClothesPanel clothes={props.images} sortValue={sortValue} />
                 </TabPanel>
 
                 {/* Passed in Categories Panels */}
                 {props.filters.map((filter, index) => (
                     <TabPanel key={index}>
-                        <ClothesPanel filter={filter.label} clothes={clothes} sortValue={sortValue} />
+                        <ClothesPanel filter={filter.label} clothes={props.images} sortValue={sortValue} />
                     </TabPanel>
                 ))}
             </Tabs>

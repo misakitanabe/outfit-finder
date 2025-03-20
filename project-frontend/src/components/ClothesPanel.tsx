@@ -2,9 +2,13 @@ import "./styles/Components.css";
 import ItemSquare from "./ItemSquare";
 
 interface ClothingItem {
-    category: string;
-    path: string;
+    id: string;
+    src: string;
+    name: string;
+    author: string;
     wornFrequency: number;
+    category: string;
+    color: string;
 }
 
 interface ClothesPanelProps {
@@ -20,7 +24,7 @@ function ClothesPanel(props : ClothesPanelProps) {
                 .filter(item => !props.filter || item.category === props.filter.toLowerCase()) 
                 .sort((a, b) => props.sortValue === "frequency" ? b.wornFrequency - a.wornFrequency : 0) 
                 .map((item, index) => (
-                    <ItemSquare key={index} category={item.category} path={item.path} />
+                    <ItemSquare key={index} category={item.category} path={item.src} />
                 ))}
         </div>
     );
