@@ -5,7 +5,9 @@ interface ImagesCollection {
     src: string;
     name: string;
     author: string;
-    likes: number;
+    favorited: number;
+    category: string;
+    color: string;
 }
 
 export class ImageProvider {
@@ -69,7 +71,7 @@ export class ImageProvider {
         return res.matchedCount;
     }
 
-    async createImage(_id: string, src: string, name: string, likes: number, author: string): Promise<ImagesCollection> {
+    async createImage(_id: string, src: string, name: string, favorited: number, category: string, color: string, author: string): Promise<ImagesCollection> {
         const imageCollectionName = process.env.IMAGES_COLLECTION_NAME;
         if (!imageCollectionName) {
             throw new Error("Missing IMAGES_COLLECTION_NAME from environment variables");
@@ -81,8 +83,10 @@ export class ImageProvider {
             _id: _id,
             src: src,
             name: name, 
-            likes: likes,
+            favorited: favorited,
             author: author,
+            category: category,
+            color: color,
         };
 
         try {

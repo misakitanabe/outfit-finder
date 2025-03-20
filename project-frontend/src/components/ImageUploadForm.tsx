@@ -2,6 +2,8 @@ import { useState, useActionState } from "react";
 
 interface ImageUploadFormProps {
     authToken: string;
+    category: string;
+    color: string;
 }
 
 export function ImageUploadForm(props: ImageUploadFormProps) {
@@ -11,16 +13,14 @@ export function ImageUploadForm(props: ImageUploadFormProps) {
         async (previousState: any, formData: FormData) => {
             const image = formData.get("image");
             const name = formData.get("name");
-
-            console.log(`image: ${image}`);
-            console.log(`name: ${name}`);
-
             if (!name || !image) {
                 return {
                     type: "error",
                     message: `Please input both name and image`,
                 };
             }
+            formData.append("category", props.category); 
+            formData.append("color", props.color);
 
             try {
                 const response = await fetch("/api/images", {
@@ -43,16 +43,11 @@ export function ImageUploadForm(props: ImageUploadFormProps) {
                 };
             } catch (error) { // Network error
                 console.error(error);
-                // Return an error message...
                 return {
                     type: "error",
                     message: `Something went wrong`,
                 };
             }
-
-            // console.log(`submitResult: ${submitResult}`);
-
-            // return response;
         },
         null
     );

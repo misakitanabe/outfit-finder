@@ -86,7 +86,7 @@ function Upload(props : UploadProps) {
                 {isFavorite ? <IoHeart className="heart" style={{ color: 'pink' }} /> : <IoHeart className="heart"/>}
             </button>
 
-            <h3><ImageUploadForm authToken={props.authToken} /></h3>
+            <h3><ImageUploadForm authToken={props.authToken} category={category} color={color} /></h3>
 
 
             {/* name input */}

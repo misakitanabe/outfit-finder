@@ -72,11 +72,13 @@ export function registerImageRoutes(app: express.Application, mongoClient: Mongo
             const _id = req.file.filename;
             const src = `/uploads/${req.file.filename}`;
             const name = req.body.name;
-            const likes = 0;
+            const favorited = 0;
+            const category = req.body.category;
+            const color = req.body.color;
             const author = res.locals.token.username;
 
             const i = new ImageProvider(mongoClient);
-            i.createImage(_id, src, name, likes, author)
+            i.createImage(_id, src, name, favorited, category, color, author)
                 .then((response) => {
                     res.status(201).send(response);
                 })
