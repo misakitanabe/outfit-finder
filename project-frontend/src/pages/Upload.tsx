@@ -6,11 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from "../components/Header"
 import UploadedImage from "../components/UploadedImage";
 import Dropdown from "../components/Dropdown";
+import { ImageUploadForm } from "../components/ImageUploadForm";
 import './styles/Pages.css'
 
 interface UploadProps {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     itemName: string;
+    authToken: string;
 }
 
 function Upload(props : UploadProps) {
@@ -84,11 +86,17 @@ function Upload(props : UploadProps) {
                 {isFavorite ? <IoHeart className="heart" style={{ color: 'pink' }} /> : <IoHeart className="heart"/>}
             </button>
 
+            <h3><ImageUploadForm authToken={props.authToken} /></h3>
+
+
             {/* name input */}
-            <input onChange={props.onChange} value={props.itemName} placeholder="Name Item" className="item-name-input"/>
+            {/* <label className="item-name-input">
+                Name Item
+                <input onChange={props.onChange} value={props.itemName} placeholder="Name Item" className="item-name-input"/>
+            </label> */}
             
             {/* image uploading box */}
-            <input className="uploading-input" type="file" accept="image/*" onChange={handleImageUpload} />
+            {/* <input className="uploading-input" type="file" accept="image/*" onChange={handleImageUpload} />
             
             <div className="image-container">
                 {!image && <BounceLoader
@@ -99,7 +107,7 @@ function Upload(props : UploadProps) {
                     aria-label="Loading Spinner"
                 />}
                 {image && <UploadedImage src={image} />}
-            </div>
+            </div> */}
 
             {/* dropdown options */}
             <div className="row-container">

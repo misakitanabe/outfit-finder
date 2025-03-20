@@ -46,7 +46,7 @@ export function LoginPage(props: LoginPageProps) {
         } else {
             console.log('token:', data.token);
             props.setAuthToken(data.token);
-            navigate("/");
+            navigate("/upload");
             return({
                 type: "success",
                 message: "successful login",

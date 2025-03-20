@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.registerImageRoutes = registerImageRoutes;
 const express_1 = __importDefault(require("express"));
 const ImageProvider_1 = require("../ImageProvider");
+const imageUploadMiddleware_1 = require("../imageUploadMiddleware");
 function registerImageRoutes(app, mongoClient) {
     app.use(express_1.default.json());
     app.get("/api/images", (req, res) => {
@@ -52,6 +53,30 @@ function registerImageRoutes(app, mongoClient) {
         })
             .catch((err) => {
             console.error(`error fetching images: ${err}`);
+        });
+    });
+    app.post("/api/images", imageUploadMiddleware_1.imageMiddlewareFactory.single("image"), imageUploadMiddleware_1.handleImageFileErrors, async (req, res) => {
+        // Final handler function after the above two middleware functions finish running
+        console.log(`req.file:`, req.file);
+        console.log(`req.body:`, req.body);
+        console.log(`token in images.ts:`, res.locals.token);
+        if (!req.file || !req.body) {
+            res.status(400).send("No file or no name");
+            return;
+        }
+        const _id = req.file.filename;
+        const src = `/uploads/${req.file.filename}`;
+        const name = req.body.name;
+        const likes = 0;
+        const author = res.locals.token.username;
+        const i = new ImageProvider_1.ImageProvider(mongoClient);
+        i.createImage(_id, src, name, likes, author)
+            .then((response) => {
+            res.status(201).send(response);
+        })
+            .catch((err) => {
+            console.error(`error uploading image: ${err}`);
+            res.status(500).send(err);
         });
     });
 }

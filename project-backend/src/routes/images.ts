@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { MongoClient } from "mongodb";
 import { ImageProvider } from "../ImageProvider";
+import { imageMiddlewareFactory, handleImageFileErrors } from "../imageUploadMiddleware";
 
 export function registerImageRoutes(app: express.Application, mongoClient: MongoClient) {
     app.use(express.json());
@@ -52,4 +53,37 @@ export function registerImageRoutes(app: express.Application, mongoClient: Mongo
                 console.error(`error fetching images: ${err}`);
             });
     });
+
+    app.post(
+        "/api/images",
+        imageMiddlewareFactory.single("image"),
+        handleImageFileErrors,
+        async (req: Request, res: Response) => {
+            // Final handler function after the above two middleware functions finish running
+            console.log(`req.file:`, req.file);
+            console.log(`req.body:`, req.body);
+            console.log(`token in images.ts:`, res.locals.token);
+
+            if (!req.file || !req.body) {
+                res.status(400).send("No file or no name");
+                return;
+            }
+
+            const _id = req.file.filename;
+            const src = `/uploads/${req.file.filename}`;
+            const name = req.body.name;
+            const likes = 0;
+            const author = res.locals.token.username;
+
+            const i = new ImageProvider(mongoClient);
+            i.createImage(_id, src, name, likes, author)
+                .then((response) => {
+                    res.status(201).send(response);
+                })
+                .catch((err) => {
+                    console.error(`error uploading image: ${err}`);
+                    res.status(500).send(err);
+                });
+        }
+    );
 }

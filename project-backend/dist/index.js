@@ -13,7 +13,7 @@ async function setUpServer() {
     dotenv_1.default.config(); // Read the .env file in the current working directory, and load values into process.env.
     const PORT = process.env.PORT || 3000;
     const staticDir = process.env.STATIC_DIR || "public";
-    const { MONGO_USER, MONGO_PWD, MONGO_CLUSTER, DB_NAME } = process.env;
+    const { MONGO_USER, MONGO_PWD, MONGO_CLUSTER, DB_NAME, IMAGE_UPLOAD_DIR } = process.env;
     const connectionStringRedacted = `mongodb+srv://${MONGO_USER}:<password>@${MONGO_CLUSTER}/${DB_NAME}`;
     const connectionString = `mongodb+srv://${MONGO_USER}:${MONGO_PWD}@${MONGO_CLUSTER}/${DB_NAME}`;
     console.log("Attempting Mongo connection at " + connectionStringRedacted);
@@ -22,6 +22,9 @@ async function setUpServer() {
     const app = (0, express_1.default)();
     const path = require('path');
     app.use(express_1.default.static(staticDir));
+    if (IMAGE_UPLOAD_DIR) {
+        app.use("/uploads", express_1.default.static(IMAGE_UPLOAD_DIR));
+    }
     app.get("/hello", (req, res) => {
         res.send("Hello, World");
     });

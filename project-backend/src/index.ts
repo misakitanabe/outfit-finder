@@ -10,7 +10,7 @@ async function setUpServer() {
     const PORT = process.env.PORT || 3000;
     const staticDir = process.env.STATIC_DIR || "public";
 
-    const { MONGO_USER, MONGO_PWD, MONGO_CLUSTER, DB_NAME } = process.env;
+    const { MONGO_USER, MONGO_PWD, MONGO_CLUSTER, DB_NAME, IMAGE_UPLOAD_DIR } = process.env;
 
     const connectionStringRedacted = `mongodb+srv://${MONGO_USER}:<password>@${MONGO_CLUSTER}/${DB_NAME}`;
     const connectionString = `mongodb+srv://${MONGO_USER}:${MONGO_PWD}@${MONGO_CLUSTER}/${DB_NAME}`;
@@ -24,6 +24,9 @@ async function setUpServer() {
     const path = require('path');
 
     app.use(express.static(staticDir));
+    if (IMAGE_UPLOAD_DIR) {
+        app.use("/uploads", express.static(IMAGE_UPLOAD_DIR));
+    }
 
     app.get("/hello", (req: Request, res: Response) => {
         res.send("Hello, World");

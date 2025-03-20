@@ -157,6 +157,7 @@ header {
     border-radius: 0.25rem;
     height: 1.5rem;
     border: none;
+    padding: 0 0.5rem 0 0.5rem;
 }
 
 .auth-button {

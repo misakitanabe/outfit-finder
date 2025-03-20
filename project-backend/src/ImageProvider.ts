@@ -51,13 +51,12 @@ export class ImageProvider {
                 },
             }
         );
-
-        const denormalizedImages: ImagesCollection[] = await collection
-            .aggregate<ImagesCollection>(pipeline)
-            .toArray();
         
+        const normalizedImages: ImagesCollection[] = await collection
+            .find()
+            .toArray();
 
-        return denormalizedImages;
+        return normalizedImages;
     }
 
     async updateImageName(imageId: string, newName: string): Promise<number> {
@@ -68,5 +67,30 @@ export class ImageProvider {
         const imageCollection = this.mongoClient.db().collection<ImagesCollection>(imageCollectionName); 
         const res = await imageCollection.updateOne({_id: imageId}, {$set: {name: newName}});
         return res.matchedCount;
+    }
+
+    async createImage(_id: string, src: string, name: string, likes: number, author: string): Promise<ImagesCollection> {
+        const imageCollectionName = process.env.IMAGES_COLLECTION_NAME;
+        if (!imageCollectionName) {
+            throw new Error("Missing IMAGES_COLLECTION_NAME from environment variables");
+        }
+        const imageCollection = this.mongoClient.db().collection<ImagesCollection>(imageCollectionName); 
+
+        // Create the document
+        const newImage: ImagesCollection = {
+            _id: _id,
+            src: src,
+            name: name, 
+            likes: likes,
+            author: author,
+        };
+
+        try {
+            const res = await imageCollection.insertOne(newImage);
+            return newImage;
+        } catch (err) {
+            throw new Error("Creating image metadata in DB failed");
+        }
+        
     }
 }
